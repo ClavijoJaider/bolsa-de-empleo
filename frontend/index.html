@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Bolsa de Empleo</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">BolsaEmpleo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Empresas</a></li>
+        </ul>
+        <div class="d-flex">
+          <a href="login.html" class="btn btn-outline-primary me-2">Iniciar Sesión</a>
+          <a href="registro.html" class="btn btn-primary">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero text-white text-center d-flex align-items-center">
+    <div class="overlay"></div>
+    <div class="container position-relative py-5">
+      <h1 class="display-4 fw-bold">Encuentra el trabajo de tus sueños</h1>
+      <p class="lead mb-4">Miles de ofertas esperando por ti. Empieza tu búsqueda hoy mismo.</p>
+      <form class="d-flex justify-content-center search-form" action="#" method="GET">
+        <input class="form-control form-control-lg me-2" type="search" name="q" placeholder="Puesto, empresa o palabra clave">
+        <button class="btn btn-lg btn-primary" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <section class="stats py-5">
+    <div class="container text-center">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="stat-card p-4 shadow-sm">
+            <h2 id="ofertas-count">0</h2>
+            <p>Ofertas disponibles</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="stat-card p-4 shadow-sm">
+            <h2 id="empresas-count">0</h2>
+            <p>Empresas colaboradoras</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ofertas destacadas -->
+  <section class="featured-jobs py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Ofertas destacadas</h2>
+      <div class="row g-4" id="featured-jobs-container">
+        <!-- Renderizado dinámico -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Detalle de Oferta -->
+  <div class="modal fade" id="jobDetailModal" tabindex="-1" aria-labelledby="jobDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="jobDetailModalLabel">Detalle de la oferta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-4 text-center">
+              <img id="modal-logo" src="" alt="Logo empresa" class="img-fluid" style="max-height:150px;">
+            </div>
+            <div class="col-md-8">
+              <h4 id="modal-title" class="fw-bold"></h4>
+              <p id="modal-company" class="text-muted mb-1"></p>
+              <p class="mb-1"><i class="fas fa-map-marker-alt"></i> <span id="modal-location"></span></p>
+              <p class="mb-3"><i class="fas fa-euro-sign"></i> <span id="modal-salary"></span></p>
+              <hr>
+              <p id="modal-description"></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <a href="#" id="modal-apply" class="btn btn-primary">Postularme</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-1">&copy; 2025 BolsaEmpleo. Todos los derechos reservados.</p>
+      <small>Diseñado con ❤️ en Colombia</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
