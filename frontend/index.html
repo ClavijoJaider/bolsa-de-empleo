@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Bolsa de Empleo</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">BolsaEmpleo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ofertas">Ofertas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#publicar">Publicar Oferta</a></li>
+        </ul>
+        <div class="d-flex">
+          <a href="login.html" class="btn btn-outline-primary me-2">Iniciar Sesión</a>
+          <a href="registro.html" class="btn btn-primary">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero text-white text-center d-flex align-items-center" style="margin-top:56px;">
+    <div class="overlay"></div>
+    <div class="container position-relative py-5">
+      <h1 class="display-4 fw-bold">Encuentra el trabajo de tus sueños</h1>
+      <p class="lead mb-4">Miles de ofertas esperando por ti. Empieza tu búsqueda hoy mismo.</p>
+      <form class="d-flex justify-content-center search-form" action="#" method="GET">
+        <input class="form-control form-control-lg me-2" type="search" name="q" placeholder="Puesto, empresa o palabra clave">
+        <button class="btn btn-lg btn-primary" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <section class="stats py-5">
+    <div class="container text-center">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="stat-card p-4 shadow-sm">
+            <h2 id="ofertas-count">0</h2>
+            <p>Ofertas disponibles</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="stat-card p-4 shadow-sm">
+            <h2 id="empresas-count">0</h2>
+            <p>Empresas colaboradoras</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ofertas destacadas -->
+  <section id="ofertas" class="featured-jobs py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Ofertas destacadas</h2>
+      <div class="row g-4" id="featured-jobs-container">
+        <!-- Renderizado dinámico -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Publicar Oferta -->
+  <section id="publicar" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Publicar Oferta</h2>
+      <form id="form-publicar" class="mx-auto" style="max-width:500px;">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="titulo" placeholder="Título" required>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="empresa" placeholder="Nombre de la empresa" required>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="ubicacion" placeholder="Ubicación" required>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="salario" placeholder="Salario" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" id="descripcion" rows="4" placeholder="Descripción" required></textarea>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="logo" placeholder="URL del logo">
+        </div>
+        <button type="submit" class="btn btn-primary">Publicar Oferta</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modal Detalle de Oferta -->
+  <div class="modal fade" id="jobDetailModal" tabindex="-1" aria-labelledby="jobDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="jobDetailModalLabel">Detalle de la oferta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-4 text-center">
+              <img id="modal-logo" src="" alt="Logo empresa" class="img-fluid" style="max-height:150px;">
+            </div>
+            <div class="col-md-8">
+              <h4 id="modal-title" class="fw-bold"></h4>
+              <p id="modal-company" class="text-muted mb-1"></p>
+              <p class="mb-1"><i class="fas fa-map-marker-alt"></i> <span id="modal-location"></span></p>
+              <p class="mb-3"><i class="fas fa-euro-sign"></i> <span id="modal-salary"></span></p>
+              <hr>
+              <p id="modal-description"></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <a href="#" id="modal-apply" class="btn btn-primary">Postularme</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-1">&copy; 2025 BolsaEmpleo. Todos los derechos reservados.</p>
+      <small>Diseñado con ❤️ en Colombia</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const API = '/api/ofertas';
+    const featuredContainer = document.getElementById('featured-jobs-container');
+    const ofertasCountEl = document.getElementById('ofertas-count');
+    const empresasCountEl = document.getElementById('empresas-count');
+    const form = document.getElementById('form-publicar');
+
+    async function cargarOfertas() {
+      const res = await fetch(API);
+      const ofertas = await res.json();
+      featuredContainer.innerHTML = '';
+      ofertas.forEach(oferta => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4';
+        col.innerHTML = `
+          <div class="card h-100">
+            ${oferta.logo ? `<img src="${oferta.logo}" class="card-img-top" alt="Logo">` : ''}
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${oferta.titulo}</h5>
+              <p class="card-text flex-grow-1">${oferta.descripcion.substring(0, 100)}...</p>
+              <button class="btn btn-sm btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target="#jobDetailModal"
+                onclick="openModal(${oferta.id})">Ver detalle</button>
+            </div>
+          </div>
+        `;
+        featuredContainer.append(col);
+      });
+      ofertasCountEl.textContent = ofertas.length;
+      empresasCountEl.textContent = new Set(ofertas.map(o => o.empresa)).size;
+    }
+
+    async function openModal(id) {
+      const res = await fetch(`${API}`);
+      const ofertas = await res.json();
+      const oferta = ofertas.find(o => o.id === id);
+      if (!oferta) return;
+      document.getElementById('modal-logo').src = oferta.logo || '';
+      document.getElementById('modal-title').textContent = oferta.titulo;
+      document.getElementById('modal-company').textContent = oferta.empresa_nombre || oferta.empresa;
+      document.getElementById('modal-location').textContent = oferta.ubicacion;
+      document.getElementById('modal-salary').textContent = oferta.salario;
+      document.getElementById('modal-description').textContent = oferta.descripcion;
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const token = localStorage.getItem('token');
+      if (!token) return alert('Debe iniciar sesión como empresa');
+      const data = {
+        titulo: form.titulo.value,
+        empresa: form.empresa.value,
+        ubicacion: form.ubicacion.value,
+        salario: form.salario.value,
+        descripcion: form.descripcion.value,
+        logo: form.logo.value
+      };
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        form.reset();
+        cargarOfertas();
+      } else {
+        const err = await res.json();
+        alert(err.error || 'Error al publicar');
+      }
+    });
+
+    // Inicializa al cargar
+    document.addEventListener('DOMContentLoaded', () => cargarOfertas());
+  </script>
+</body>
+</html>
